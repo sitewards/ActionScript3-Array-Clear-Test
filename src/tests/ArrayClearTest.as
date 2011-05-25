@@ -7,7 +7,6 @@
 	{
 		public static var NUMBER_OF_ARRAYS:int = 10000;
 		public static var ARRAY_LENGTH:int = 100;
-		public static var ARRAY_POOL_SIZE:int = 12000;
 		public var name:String = "overwrite";
 		
 		protected var m_array:Array;
@@ -21,14 +20,6 @@
 		{
 			NUMBER_OF_ARRAYS = _num;
 			ARRAY_LENGTH = _len;
-			if (m_objectPool == null && false)
-			{
-				m_objectPool = new Array(ARRAY_POOL_SIZE);
-				for (var i:int = 0; i < m_objectPool.length; i++)
-				{
-					m_objectPool[i] = new Object();
-				}			
-			}
 		}
 		
 		public function init():void 
@@ -39,7 +30,7 @@
 				m_array[a] = new Array(ARRAY_LENGTH);
 				for (var i:int = 0; i < m_array[a].length; i++)
 				{
-					m_array[a][i] = a + i;// m_objectPool[i % ARRAY_POOL_SIZE];
+					m_array[a][i] = a + i;
 				}
 			}
 		}
